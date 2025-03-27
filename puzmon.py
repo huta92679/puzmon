@@ -3,7 +3,22 @@
 #グローバル変数の宣言
 
 #関数宣言
-
+ELEMENT_SYMBOLS= {
+        '火':'$',
+        '水':'~',
+        '風':'@',
+        '土':'#',
+        '命':'&',
+        '無':' ',
+    }
+ELEMENT_COLORS= {
+        '火':'1',
+        '水':'6',
+        '風':'2',
+        '土':'3',
+        '命':'5',
+        '無':'7',
+    }
 def main():
     monster_list=[
             {
@@ -76,11 +91,14 @@ def do_battle(moster):
     print_monster_name(monster)
     print('を倒した!')
     return 1
+
 def print_monster_name(monster):
     monster_name = monster['name']
+    symbol = ELEMENT_SYMBOLS[monster['element']]
+    color = ELEMENT_COLORS[moster['element']]
 
     #モンスター名を表示
-    print(f'{monster_name}',end='')
+    print(f'\033[{color}m{symbol}{monster_name}{symbol}\033[0m',end='')
 #main関数の呼び出し
 main()
 
